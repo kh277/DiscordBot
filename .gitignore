@@ -1,1 +1,5 @@
+.venv/
+__pycache__/
 parameter.json
+test.py
+*.pyc

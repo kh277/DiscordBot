@@ -1,10 +1,7 @@
 # 메이플 API로 캐릭터의 정보를 받아오는 기능 수행
 
 import requests
-import re
 from loadJson import getMapleAPIKey
-import datetime as dt
-
 
 API_KEY = getMapleAPIKey()
 
