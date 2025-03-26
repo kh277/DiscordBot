@@ -32,5 +32,10 @@ def getRandomFood(foodType):
     # 양식에서 고르는 경우
     elif foodType == "양식":
         return menu.weasternFood[random.randint(0, len(menu.weasternFood)-1)]
+    elif foodType == "다":
+        return menu.koreanFood[random.randint(0, len(menu.koreanFood)-1)] + ", " + \
+            menu.japaneseFood[random.randint(0, len(menu.japaneseFood)-1)] + ", " + \
+            menu.chineseFood[random.randint(0, len(menu.chineseFood)-1)] + ", " + \
+            menu.weasternFood[random.randint(0, len(menu.weasternFood)-1)]
     else:
         return "Error"

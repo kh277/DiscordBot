@@ -100,14 +100,29 @@ async def 디맥(interaction: discord.Interaction, number: str = "4"):
         await interaction.response.send_message(embed=embed)
 
 
-@bot.tree.command(name="밥", description="식사 메뉴를 랜덤으로 추천해줍니다. ('한식', '일식', '양식', '중식', '' 입력 가능.)")
+@bot.tree.command(name="밥", description="식사 메뉴를 랜덤으로 추천해줍니다. ('한식', '일식', '양식', '중식', '다', '' 입력 가능.)")
 async def 밥(interaction: discord.Interaction, food_type: str = None):
     result = getRandomFood(food_type)
 
     if result == "Error":
-        embed = discord.Embed(description=f"{food_type}는 존재하지 않는 음식 분류입니다.", color=hx.RED)
+        embed = discord.Embed(description=f"<{food_type}>는 존재하지 않는 음식 분류입니다.", color=hx.RED)
+    elif food_type == "다":
+        embed = discord.Embed(description=f"각 메뉴 중 <{result}>가 뽑혔어요.", color=hx.GREENYELLOW)
     else:
-        embed = discord.Embed(description=f"오늘은 {result} 어떠신가요?", color=hx.GREENYELLOW)
+        embed = discord.Embed(description=f"오늘은 <{result}> 어떠신가요?", color=hx.GREENYELLOW)
+    await interaction.response.send_message(embed=embed)
+
+
+@bot.tree.command(name="학식", description="학식 링크를 올려줍니다. ('시립', '서강', '경희', '인천' 입력 가능.)")
+async def 학식(interaction: discord.Interaction, collage_name: str = None):
+    if collage_name == "시립":
+        embed = discord.Embed(description=f"https://www.uos.ac.kr/food/placeList.do?rstcde=020", color=hx.ALICEBLUE)
+    elif collage_name == "서강":
+        embed = discord.Embed(description=f"https://www.sogang.ac.kr/ko/menu-life-info", color=hx.ALICEBLUE)
+    elif collage_name == "경희":
+        embed = discord.Embed(description=f"https://coop.khu.ac.kr/food-menu/학생회관-식당-주간메뉴/", color=hx.ALICEBLUE)
+    elif collage_name == "인천":
+        embed = discord.Embed(description=f"https://www.inu.ac.kr/inu/643/subview.do", color=hx.ALICEBLUE)
     await interaction.response.send_message(embed=embed)
 
 
